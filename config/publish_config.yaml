@@ -1,0 +1,41 @@
+# Configuration for publishing the public repository (traderBot)
+exclusions:
+  - "data/"
+  - "results/"
+  - ".coverage"
+  - "TODOs/"
+  - "audit_report.md"
+  - ".claude/skills/publish-traderbot/"
+  - "z_archived/starterGuide.md"
+  - "test_agg.py"
+  - "todo.md"
+  - "bridge_test.log"
+  - "discord_bridge.log"
+  - ".pytest_cache/"
+  - "__pycache__/"
+
+# Key-value pairs for text replacements across the codebase
+path_scrubs:
+  "./venv/bin/activate": "./venv/bin/activate"
+  "python3": "python"
+  "./venv_stonkerino/": "./venv/"
+  "/Users/jaggia/": "./"
+  "backTestingTraderBot": "traderBot"
+
+# Patterns that should never exist in the public repository
+banned_patterns:
+  - "sync_window: 20"
+  - "profit_target_pct: 20"
+  - "stop_loss_pct: 20"
+  - "\\$[0-9,]{3,}" # P&L dollar amounts
+  - "win rate is [0-9.]+"
+  - "profit factor of [0-9.]+"
+
+# Specific file handling
+file_processing:
+  README.md:
+    strip_internal: true
+    replace_project_name: true
+  CLAUDE.md:
+    strip_internal: true
+    replace_project_name: true

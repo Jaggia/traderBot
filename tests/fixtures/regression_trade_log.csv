@@ -1,0 +1,5 @@
+,direction,trade_mode,entry_price,exit_price,contracts,pnl,pnl_pct,exit_reason
+0,long,equities,400.0,480.0,10,800.0,20.0,profit_target
+1,long,equities,400.0,320.0,10,-800.0,-20.0,stop_loss
+2,long,equities,400.0,400.0,10,0.0,0.0,opposite_signal
+3,short,equities,400.0,400.0,10,-0.0,-0.0,backtest_end

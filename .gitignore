@@ -1,0 +1,17 @@
+.env
+.DS_Store
+
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.vscode/
+.idea/
+.claude/worktrees/
+/data/
+venv_stonks/
+config/strategy_params.yaml
+autoresearch/results.tsv
+autoresearch/run.log

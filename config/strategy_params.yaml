@@ -1,0 +1,72 @@
+backtest:
+  eod_cutoff_time: '15:55'
+  is_fraction: 0.0
+costs:
+  commission_per_contract: 0.65
+  slippage_pct: 0.0
+  slippage_per_contract: 0.1
+data:
+  data_source: databento
+  databento_equities_dir: data/DataBento/equities/SYMBOL/5min
+  equities_dir: data/Alpaca/equities/SYMBOL/5min
+  options_dir: data/DataBento/options/SYMBOL/1min
+  tv_equities_dir: data/TV/equities/SYMBOL/5min
+exits:
+  eod_close: true
+  opposite_signal: true
+  profit_target_pct: 20.0
+  stop_loss_pct: 20.0
+live:
+  ibkr_host: 127.0.0.1
+  ibkr_port: 4002
+  ibkr_streamer_client_id: 1
+  ibkr_trader_client_id: 2
+  warmup_bars: 200
+monte_carlo:
+  sizing_max_contracts: 20
+  sizing_tolerance_pct: 10.0
+options:
+  sigma: 0.25
+  strike_selection: 1_OTM
+  target_delta: 0.33
+  target_dte: 0
+position:
+  contracts_per_trade: 1
+  max_concurrent_positions: 1
+  sizing_mode: fixed
+  sizing_pct: 50
+signals:
+  # Sequential arm->fire logic. Sequential mode is default (triggers happen in sequence).
+  trigger_chain:
+    triggers:
+      - indicator: smi
+      - indicator: williams_r
+    sequential: true
+    sync_window: 20
+    vwap_filter: false
+
+  # Indicator parameters
+  smi_fast:
+    period: 5
+    smooth1: 8
+    smooth2: 8
+  smi_slow:
+    period: 13
+    smooth1: 8
+    smooth2: 8
+  williams_r:
+    period: 13
+  
+  # For RSI or MACD if used in triggers
+  rsi:
+    period: 14
+  macd:
+    fast_period: 12
+    slow_period: 26
+    signal_period: 9
+
+strategy:
+  initial_capital: 100000
+  signal_system: trigger_chain
+  timeframe: 5min
+  trade_mode: options
